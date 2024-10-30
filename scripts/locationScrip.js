@@ -26,4 +26,5 @@ navigator.geolocation.watchPosition((position) => {
     localStorage.setItem("@locationLong", `${position.coords.longitude}`)
 
 
+
 });

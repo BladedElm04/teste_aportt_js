@@ -19,8 +19,8 @@ button.addEventListener("click", (e) => {
         context.drawImage(video, 0, 0);
 
         localStorage.setItem("@photo", canvas.toDataURL())
-        localStorage.setItem("@date", new Date())
-
+        
+        
         const getIp = async () => {
             const res = await fetch("https://api.ipify.org?format=json");
             const json = await res.json();
@@ -30,20 +30,32 @@ button.addEventListener("click", (e) => {
         }
         getIp()
 
-        
+        button.remove()
+
         const cam = document.getElementById("cam");
         const save = document.createElement("a");
-    
-        console.log(canvas)
-    
-        save.innerText = "Continuar"
+
+        const deletePhoto = document.createElement("button");
+        deletePhoto.addEventListener("click", (e) => {
+            
+            
+            location.reload()
+            
+            localStorage.removeItem("@photo")
+        })
+        
+        deletePhoto.innerText = "Deletar"
+        
+        save.innerText = "Salvar"
         save.href = "../index.html"
-    
-    
-        cam.append(save)
+        save.classList.add("continue")
+        
+        localStorage.setItem("@date", new Date())
+        
+        cam.append(deletePhoto, save)
     })
-    
-    
+
+
 
 
 })

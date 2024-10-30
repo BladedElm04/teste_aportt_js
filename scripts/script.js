@@ -24,10 +24,10 @@ const getDate = () => {
     if(now.getHours() < 12){
         pTimeOfDay.innerText = "Bom dia"
     }
-    if(now.getHours() >= 12 && now.getHours() <= 18){
+    if(now.getHours() >= 12 && now.getHours() < 18){
         pTimeOfDay.innerText = "Boa tarde"
     } 
-    if(now.getHours() > 18 && now.getHours() <= 24){
+    if(now.getHours() >= 18 && now.getHours() <= 24){
         pTimeOfDay.innerText = "Boa noite"
     }
 
@@ -65,9 +65,22 @@ const date = localStorage.getItem("@date");
 console.log(date)
 
 if(date){
-    text.innerText = date
+    text.innerText = "Ponto efetuado"
 } else {
     text.innerText = "Aguardando ponto"
 }
 
-registered.append(text)
+registered.append(text);
+
+const info = document.getElementById("info");
+const p = document.createElement("p");
+p.innerText = "Não há registros"
+
+const bInfo = document.createElement("button");
+bInfo.innerText = "Acessar registros"
+
+if(date){
+    info.append(bInfo);
+} else {
+    info.append(p)
+}
