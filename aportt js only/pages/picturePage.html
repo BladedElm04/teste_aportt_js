@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../scripts/script.js" defer></script>
+    <script src="../scripts/photoScript.js" defer></script>
+    <title>Registro de Ponto</title>
+</head>
+<body>
+    <div class="main">
+        <div class="main_hour">
+            <div class="greetings_container">
+                <p id="greetings"></p>
+                <p>Colaborador</p>
+                <div class="date_container">
+                    <span id="date"></span>
+                    <span id="day"></span>
+                </div>
+            </div>
+            <div class="clock">
+                <span id="hour"></span>
+                <span id="minutes"></span>
+                <span id="seconds"></span>
+            </div>
+        </div>
+        <div id="cam" class="main_cam">
+            <p>Uma selfie atual sua</p>
+            <p>Use um ambiente iluminado</p>
+            <video autoplay></video>
+            <canvas></canvas>
+            <button>Tirar foto</button>
+        </div>
+    </div>
+</body>
+</html>
