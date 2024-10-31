@@ -47,10 +47,12 @@ button.addEventListener("click", (e) => {
         })
 
         deletePhoto.innerText = "Deletar"
+        deletePhoto.classList.add("photo_buttons")
 
-        save.innerText = "Salvar"
-        save.href = "../index.html"
-        save.classList.add("continue")
+        save.innerText = "Salvar";
+        save.href = "../index.html";
+        save.classList.add("continue");
+        save.classList.add("photo_buttons")
 
         localStorage.setItem("@date", new Date())
 
