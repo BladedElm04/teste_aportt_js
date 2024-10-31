@@ -109,3 +109,21 @@ canvas {
     width: 80%;
     margin: 1rem;
 }
+
+ul {
+    margin: 1rem;
+}
+
+li {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2rem;
+}
+
+.title {
+    margin-top: 2rem;
+}

@@ -21,13 +21,13 @@ const getDate = () => {
 
     const pTimeOfDay = document.getElementById("greetings");
 
-    if(now.getHours() < 12){
+    if (now.getHours() < 12) {
         pTimeOfDay.innerText = "Bom dia"
     }
-    if(now.getHours() >= 12 && now.getHours() < 18){
+    if (now.getHours() >= 12 && now.getHours() < 18) {
         pTimeOfDay.innerText = "Boa tarde"
-    } 
-    if(now.getHours() >= 18 && now.getHours() <= 24){
+    }
+    if (now.getHours() >= 18 && now.getHours() <= 24) {
         pTimeOfDay.innerText = "Boa noite"
     }
 
@@ -38,9 +38,9 @@ const getDate = () => {
         let minutes = now.getMinutes();
         let seconds = now.getSeconds();
 
-        if(hour < 10) hour = "0" + hour;
-        if(minutes < 10) minutes = "0" + minutes;
-        if(seconds < 10) seconds = "0" + seconds;
+        if (hour < 10) hour = "0" + hour;
+        if (minutes < 10) minutes = "0" + minutes;
+        if (seconds < 10) seconds = "0" + seconds;
 
         const spanHour = document.getElementById("hour");
         spanHour.innerText = `${hour}`;
@@ -60,27 +60,44 @@ const registered = document.getElementById("registered");
 
 const text = document.createElement("p");
 
-const date = localStorage.getItem("@date");
+const getData = async () => {
+    const res = await fetch("http://localhost:3000/api/dados");
+    const json = await res.json();
 
-console.log(date)
+    const index = json.findIndex((e) => new Date(e.date).getDay() === new Date().getDay())
 
-if(date){
-    text.innerText = "Ponto efetuado"
-} else {
-    text.innerText = "Aguardando ponto"
+    console.log(index)
+
+    if (json[index]) {
+        text.innerText = "Ponto efetuado"
+    } else {
+        text.innerText = "Aguardando ponto"
+    }
+
+    registered.append(text);
+
+    const info = document.getElementById("info");
+    const p = document.createElement("p");
+    p.innerText = "Não há registros"
+
+    const bInfo = document.createElement("button");
+    bInfo.innerText = "Acessar registros"
+
+    if (json[index]) {
+        info.append(bInfo);
+        const a = document.createElement("a");
+        a.href = "../pages/registersPage.html";
+
+        a.append(bInfo);
+        info.append(a)
+    } else {
+        info.append(p)
+    }
+
 }
 
-registered.append(text);
+getData()
 
-const info = document.getElementById("info");
-const p = document.createElement("p");
-p.innerText = "Não há registros"
+// const date = localStorage.getItem("@date");
 
-const bInfo = document.createElement("button");
-bInfo.innerText = "Acessar registros"
 
-if(date){
-    info.append(bInfo);
-} else {
-    info.append(p)
-}
